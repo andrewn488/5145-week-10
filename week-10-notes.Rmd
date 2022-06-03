@@ -1,0 +1,616 @@
+---
+title: "Week-10-Notes"
+author: "Andrew Nalundasan"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overview Video
+
++ Power BI Assignments: 
+    
+    + From AppSource
+        + Force-Directed Graph
+        + Journey Chart
+
++ Power BI 
+
+    + Data Query
+    + Some visualization
+    + Short assignmnets
+    
++ Hadoop
+
+    + Reading / videos
+    + No assignments
+    + Questions on the final
+    
++ Final exam
+
+    + Short essay questions
+    + True/False, multiple choice
+    + SQL 
+    + Mostly MQL
+
+# Power BI, Part 1
+
+## Week 10 Intro
+
++ Graph databases and DBMS
++ Unstructured Big Data (Hadoop)
+
+    + Data modeling and movement <- get thing organized in a disorganized environment
+    + Data processing and orchestration
+    + Real-time processing
+    
++ Power BI Query & Visuals
+
+    + allows us to do data queries
+    + tools from SQL server very similar - queries & formatting
+
+## Power BI Desktop Overview
+
+![](what_is_pbi.png)
+
++ Power BI is pretty much a brand
+
+    + Power BI Desktop vs. Power BI Services vs. Power BI Portal
+    + Power BI brand encompasses multiple things
+        + Backend hosting capability
+        + Report design tools <- ANALYST
+        + Data integration & modeling tools <- ANALYST
+        + Clients
+        + Data connections
+        
++ Power BI Desktop
+
+    + Steps
+        + ** Ability to connect to data (GET DATA), including multiple data sources
+        + Shape the data with queries to create models (data sets) 
+            + Power QUery (aka M-language)
+            + "Mashup" ** <- special query language to mashup data from multiple sources to create new data sets
+        + Use the data models to create reports and visuals
+        + Share reports as files or publish to service
+
+
+## PBI Intro and Get Data
+
++ practice on Albers VD
++ Get data capabilities in PBI is incredibly robust
+
+    + Use PBI to get data wherever data resides and work with in PBI
+
+# Power BI, Part 2
+
+## PBI Transform Data
+
++ Practice on Albers VD
++ Power Query similar to Aggregation pipeline in MQL
+
+    + works in stages over the course of a pipeline
+
+## PBI Calculated Columns and Measures
+
++ In SQL and MQL, we can create new columns
++ We can do the same thing in Power Query as well
++ measure <- Power Query
+
++ Power BI Data
+
+    + Data
+        + Cleanup and merging columns
+        + building relationships
+        + creating calculated columns and measures
+    + Calculated columns
+        + to evaluate each row
+        + stored in the database
+    + Measures
+        + for aggregates
+        + store in-memory at the time of query
+    
+
+## PBI Visuals
+
++ Practice on VD
+
+# Graph Data Structures
+
+## Graph Data Overview
+
++ Most elegant and simplistic data structure
++ Enables visualization of complex relationships
++ NoSQL Data Types
+
+    + Key-value - large amounts with simple lookup
+    + Document - general purpose
+    + wide-column - large amounts predictable query patterns
+    + **Graph** - storing and analyzing relationships between data
+    
++ NoSQL - Graph Databases
+
+    + Does NOT mean: No SQL 
+        + They actually use alot of SQL features
+    + Does NOT mean: Non-relational
+        + Graphs are VERy relational
+    + Means: Not-Only-SQL
+        + Means we can use Non-SQL database products
+        + Use special query capabilities
+    + Graph <- method for connecting multiple data points through various relationships
+    
++ Network Theory
+
+    + the study of graphs
+    + graphs
+        + **symmetric**
+        + **asymmetric**
+            + focuses on complex relationships
+            + vertices
+            + edges
+            + direction
+    + Network Analysis
+        + all organizations deal with graph data 
+        + understanding relationships provides massive amounts of insights
+
+## Network Analysis
+
++ "Fun with Graphs" 
++ All about looking at complex relationships and drawing conclusions that you couldn't do without the analysis
++ Network Analysis - Social
+    
+    + Social sites
+        + Examining relationships between social entities at different levels
+    + Biological networks
+        + Examine relationships that exist for different elements (cells, compounds, biological ccomponents) in relation to DISEASE
+        + Understand interaction between biological components and disease
+        + Gatekeeper regulates transmission between 2 large data groups
+    + Narrative networks
+        + Process of parsing out text components posted on web to extract out actors of their relationships
+        + Reverse engineer information that was released, how it was shared, and who posted first
+        + Russian hacking in 2016 election used Narrative network analysis
+        + Find out where stories and narritives begin (real people vs. bots vs. who controls it)
+        + following the data. deals with the data. Eventually the analyst finds the entire trail
+        + can always get to original source
+        + **Office hours question - are there companies that do this? I would love to work for a company that tracks these things down and finds the bullshit and finds the truth that is being reported in the media.**
+    + Link analysis
+        + Explores associations between objects rather than direct influcences
+        + Insurance fraud example - A few too many coincidences 
+    + Centrality
+        + Contact tracing
+        + Nodes/vertices & edges to look for centrality
+        + determine most important points within a graph
+        + look for those individuals that are super spreaders without realizing it
+        + Degree Centrality <- Local Attention
+        + Closeness Centrality <- Capacity to communicate
+        + Betweenness Centrality <- reveal broker "A place for good ideas"
+
+## Graph Data
+
++ what is graph data?
+
+    + **data structure that connects multiple data points through various relationship** - EXAM
+    + different than regular data and metadata
+    + Facebook Data:
+        + Name
+        + Birthdate
+        + Location
+        + Gender
+    + Facebook Posts: 
+        + Name
+        + Date
+        + Image/Video
+        + Comment
+    + Facebook Relationships:
+        + Name1
+        + Name2
+        + Relationship
+        + **Direction**
+
+![](vertices_and_edges.png)
+
+![](simple_graph_tables.png)
+
++ matter of creating correct tables and correct relationships
+
+![](complex_relationships.png)
+
++ multiple relationships on separate edges
++ albeit redundant
+
+
+![](nosql_graph_schema.png)
+
++ Graph Queries
+
+    + Types of questions
+        + Specific connections
+        + Relationship between two points (vertices)
+        + Shortest distance between 2 points
+            + degrees of separation
+        + Shared interests
+            + collaborative filtering
+
++ IMDB example
+
+## Graph DBMS
+
++ Graph DBMS
+    
+    + Sturctured Relational Data
+        + often uses traditional relational DBMS
+        + Specialized DBMS products
+    + DBMS - database
+    + Graph Analysis - Numerous!!!
+    
++ Abstraction <- put something on top of something else thru use of Routine (Gremlin)
++ DBMS processing this information
+
+    + New York Sushi Restaurants
+
++ NoSQL Processing: 
+
+    + Option 1:
+        1. Get friend comments (Read & Partition)
+        2. Meal likes (super steps - BSP)
+        3. In NYC (super steps - BSP)
+        4. Sushi (super steps - BSP)
+        5. RESULTS (write disk)
+    + Option 2:
+        1. Get friend comments (Read & Partition)
+        2. Meal likes (super steps - BSP)
+        3. Sushi (super steps - BSP)
+        4. In NYC (super steps - BSP)
+        5. RESULTS (write disk)
+    + Option 3: (Apache Spark) 
+        1. Get friend comments (read & partition)
+        2. Process: meal likes (spark processes - BSP)
+        3. Process: NYC (spark processes - BSP)
+        4. Process: sushi (spark processes - BSP)
+        5. Other: Ratings (side process)
+        6. RESULTS (write disk)
+
+
+# Unstructured Data, Part 1
+
+## Unstructured Overview
+
++ Big data systems now being used for structured data due to scaling very well
++ Unstructured / Big Data
+
+    + All data has some kind of structure
+        + But we may not know it
+        + know what data looks like, but can't control it
+        + and it could vary
+    + Can be pretty much any kind of data
+        + sensor data (weather stations)
+        + social media posts
+        + e-mails, spreadsheets, databases
+        + video & images
+        + audio and voice 
+    + Talking about structured data that we can't control 
+    
+![](sql_nosql_unstructured.png)
+
++ high speed ingestion <- notification to watch about transaction before clerk returns credit card to Snodgrass
+
+## Unstructured Data Part II
+
++ The big DBMS difference
+
+    + SQL and NoSQL organize data **as it arrives**
+        + Stores data based on schema
+            + Even if the schema is flexible (NoSQL)
+        + Indexes key fields/columns for searching
+        + Requires "upfront processing"
+    + Unstructured files **data in original format**
+        + stores data in folders in a data lake, just like my own computer!
+        + applies indexing to find data objects
+        + leaves the **"processing to the end"** 
+        
++ What makes data Big Data? - EXAM
+
+    + Volume, Velocity, Variety, Variability
+        + **Volume** <- large quantity
+        + **Velocity** <- high-speed
+        + *Variety* <- data of different types
+        + *Variability* <- lack of consistency in data
+    + "Variety and Variability are what determine the differences between Structured and Unstructured Big Data"
+
+![](vs_exam.png)
+
++ How do we measure data?
+
+    + Normal data
+        + Byte (a single character)
+        + Kilobyte / KB (1 million bytes, equivalent to a very short story)
+        + Gigabyte / GB (1 billion bytes, equivalent to a made for TV movie)
+        + Terabyte / TB (1 trillion bytes, equivalent to all the xrays in a large hospital)
+    + Big Data
+        + Petabyte / PT
+        + Exabyte / EB
+        + Zettabyte / ZB
+        + Yottabyte / YB
+        + Zenottabye, Shilentnobyte, Domegemegrottebyte
+        
++ big data happens in 60 seconds
++ Unstructured and Big Data
+
+    + Requires sophisticated tools
+        + Analyze, categorize, store, and retrieve
+        + Often uses data lakes
+        + Heavy-weight (uses clusters)
+            + Scalable and high-speed
+        Specially designed programming tools and skills
+    + Big players
+        + Hadoop, BigQuery, Teradata, DynamoDB
+        + SQL Server Big Data CLusters (PolyBase)
+
+## Analyzing Big Data
+
++ Types of analytics
+
+    + Descriptive <- what happened?
+    + Diagnostic <- why did it happen?
+    + Predictive <- what is likely to happen?
+    + Prescriptive <- what can we do to make it happen?
+
++ choice determines
+
+    + Type of data
+    + Analytic tools and processes
+    + Computer system configuration
+    
++ Data volume - lots of data being stored all over the place
+
++ Descriptive Analytics
+
+    + Clickstream Analysis
+
++ Diagnostic Analytics
+
+    + medical research
+    + sentiment analysis (positive / neutral / negative)
+
++ Predictive Analytics
+
+    + Forecasting birth trends in the world
+    + Fraud Detection
+    
++ Prescriptive Analytics
+
+    + Maps / navigation
+        + Gathering information from everyone that has location services turned on
+        + This is what determines traffic / density
+        + Route recommendations 
+
+## Big Data DBMS Architecture
+
++ Very similar to lego's
+    
+    + what you actually implement is dependent on type of problem trying to solve / what you're trying to do with the data
+    
+![](system_architecture.png)
+
++ ingest <- receiving data and bringing into our environment
++ process & analyze <- be able to analyze the data during the ingestion process
++ data store <- don't need to preprocess - can store in native format
++ query & analysis <- once stored and on disk, can begin queries and analysis after data has arrived
++ Must orchestrate activities - when and how to execute each stage
+
+    + resource allocation
+    + partition server/cluster intelligently
+
++ Data Management Concepts - EXAM
+
+    + **Ingestion** <- refers to receiving and loading data for processing
+    + **Processing** <- refers to taking the raw data ingested and storing it as is OR transforming and filtering it into data set(s)
+    + **Data Storage / Modeling** <- refers to decisions around the storage system and data models
+    + **Analyzing / Processing / Graphing** <- Refers to running various analytical queries or processes on the data to find answers and insights
+    + **Orchestration** <- refers to automating the arrangement and coordination of various processes that perform ingestion, processing, and analyzing
+
++ Data Lake Storage 
+
+![](data_lake_storage.png)
+
++ Other examples: 
+
+    + Weather data analysis
+    + Web clickstream analysis
+    + Data Mining
+
+# Unstructured Data, Part 2
+
+## Hadoop Basics
+
++ "Hadoop" based on name of extinct mammoth
++ Hadoop
+
+    + A framework: 
+        + provides distributed storage
+        + provides different components and can use any which number of components
+        + coordinates computing resources (cluster computering)
+        + Provides high-availability and fault-tolerance (self-healing)
+        + Highly scalable
+        + Includes programming tools
+        + Cost effective
+        + **"The exact configuration and components used will depend on your business requirements"** - EXAM
+
++ Important to know
+
+    + Uses an **Ecosystem** of add-on packages
+        + Created for specific requirements
+            + Created by companies for internal use
+            + Created by developers to sell
+        + Core Hadoop is open-source
+            + Community effort
+            + Not owned by a big corporation
+            + So, advancements are **always** shared with the community for the community's benefit
+            
++ Hadoop & Ecosystem
+
+![](hadoop_and_ecosystem.png)
+
++ Base Hadoop
+
+    1. HDFS <- Hadoop Data File Storage
+    2. MapReduce <- way of filtering and querying and managing the data
+        + Basis for MongoDB Aggregate Pipeline
+    3. YARN <- resource management
+        + Yet Another Resource Negotiator
+    + What type of data you want and what type of queries you want to perform
+    
++ Hadoop Core
+
+    + Hadoop comes with 3 core components
+        1. HDFS (Hadoop Distributed File SYstem) <- storage
+            + similar to the windows file system
+        2. YARN <- computing resource management
+            + Manages how work is distributed within the Hadoop environment
+        3. MapReduce <- base programming model
+            + Basis of how processing and anlysis is done, but can be accessed and extended with other tools
+            + Similar to MongoDB aggregation pipelines
+
+## Hadoop Clusters
+
++ Hadoop works primarily on clusters
++ Hadoop Clusters - EXAM
+
+    + A **group** of computers called a **Cluster**
+        + With core components
+        + specific packages
+        + designed for a specific workload
+    + question
+        + **why a group of computers, rather than one big, powerful server?**
+            + **Parallel processing** is key to Big Data architectures - EXAM
+            + 1 server at 100 mins vs. 25 servers at 4 mins
+            + Head Node is the traffic cop that distributes resources / queries. Often becomes the bottleneck
+            
+![](server_comparison.png)
+
++ Efficiencies of parallel processing of Hadoop Cluster has greater speed than traditional server
+
+## Hadoop Storage
+
++ Data Storage
+
+    + Hadoop variable data storage
+        + Centralized
+        + Distributed (sharded)
+        + Data Lake
+        
++ Tradeoffs abound
+    
+    + Performance
+    + Cost
+    
++ Central data storage
+
+![](central_data_storage.png)
+
++ Data store is queried 
++ Head node determines which compute node can service the query
++ all machines query the data store, executing their portion of the query, and returns back to head node for output
++ multiple clusters for different workloads exist
++ Data Lake can replace Data Store
+
+    + data lakes are for high speed ingestion of native format (free form) 
+        + Data lakes can also be shared by multiple clusters
+    + data store is for something more structured
+    
++ Everything comes with a price
+
+![](price.png)
+
+1. Centralized datastore
+
+    + Solution for data warehouse / data mining capability
+    + slower rate of ingestion
+    + data is well organized 
+    + servers are medium cost
+    + all compute nodes access central data store, so data transfer must take place
+        + this causes slower performance
+        
+2. Distributed Data Store
+
+    + ingestion is well organized
+    + costs upfront partition planning
+    + requires upfront thinking and planning
+    + ingestion must recognize what the data is so can store it properly
+    + compute performance works extremely fast
+    + servers can be lower performing and less expensive
+
+3. Data Lake
+
+    + all about high speed ingestion
+    + data dumped into lake without conversions
+    + higher performing servers - more processing when reading in data
+    + processing the data is complex 
+    
++ Each data storage method has benefits and tradeoffs
+    
+## Hadoop Architecture Example
+
++ Appraisal Optimization
+
+    + Big Data solution
+        + Rely on Big Data house valuation services
+            + zillow
+            + redfin
+        + Predictive Analytics
+            + Based on historical activity and current listings
+            + Create valuations that are 10% more accurate than human appraisals
+                + instantaneous
+                + don't cost hundreds of dollars
+        + Meets all objectives and reduces risk
+        
++ House Hunting
+
+    + House buying
+        + Seattle based RedFin real-estate company
+        + https://www.redfin.com/
+    + Objective
+        + reduce cost to customer
+            + cut realtor fee by 50% (from 3% to 1.5%)
+            + On an $800k home that saves $3,400 buyer - $16,000 seler
+        + Relies on buyers being self-sufficient! - These are online tools
+    + RedFin expects buyer to create list of houses themselves, then send RedFin realtor to show the houses
+    
++ Examples
+
+    + Realtor.com
+        https://www.realtor.com/realestateandhomes-detail/518-N-80th-St_Seattle_WA_98103_M12923-31881
+    + RedFin.com
+        https://www.redfin.com/WA/Seattle/518-N-80th-St-98103/home/300257
+        
+![](housing_analysis.png)
+
++ redfin housing data is very structured, but comes from many different sources
+
+![](housing_analysis_architecture.png)
+
+# Bosanko work
+
+```{r}
+model_data <- tibble::tribble(
+  ~model, ~name ,
+  "mpg ~ factor(am)", "name_1.rds",
+  "mpg ~ factor(gear)" , "name_2.rds"
+)
+```
+
+
+```{r}
+purrr::pwalk(model_data, function(model, name) {
+  .m_result <- lm(as.formula(model), data = mtcars)
+  saveRDS(.m_result, name)
+})
+```
+
